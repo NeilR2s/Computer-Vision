@@ -1,0 +1,83 @@
+Pixel Representation Notebook Documentation
+
+The notebook demonstrates how to perform various image processing operations. It covers:
+
+Reading and converting images between different color spaces (BGR, RGB, HSV).
+Plotting multiple images side by side for comparison.
+Resizing images using different interpolation methods.
+Applying geometric transformations such as scaling, rotation, and translation.
+Combining transformations within the HSV color model.
+
+
+The following Python libraries are required:
+
+OpenCV (cv2): For reading images, color space conversions, resizing, and geometric transformations.
+NumPy: For numerical operations and handling transformation matrices.
+Matplotlib: For displaying images and creating plots.
+
+Dependencies
+The notebook requires the following Python libraries: 
+• OpenCV (cv2) for image processing (reading images, color space conversions, resizing, and geometric transformations). 
+• NumPy for numerical operations and handling transformation matrices. 
+• Matplotlib for displaying images and creating plots.
+
+Example import statements: import cv2 as cv import numpy as np from matplotlib import pyplot as plt
+
+Code Overview
+
+A. Library Imports
+
+The first cell imports the essential libraries: 
+• OpenCV (cv2): Used for image processing. 
+• NumPy: For array manipulations and creating transformation matrices. 
+• Matplotlib's pyplot: Provides plotting functionality for image visualization.
+
+B. Plot Images Function
+
+A helper function named "plot_images" is defined to display multiple images in a grid layout.
+Function signature: 
+def plot_images(images: list, titles: list, columns: int, font_size: int, allow_axes: bool) -> np.ndarray:
+
+Parameters: 
+• images: List of image arrays. 
+• titles: List of strings that describe each image. 
+• columns: Number of columns in the plot grid. 
+• font_size: Font size for subplot titles. 
+• allow_axes: Boolean flag; if False, axes are turned off.
+The function calculates the number of rows, creates a subplot grid, assigns each image with its title, and displays the plot.
+
+C. Reading and Converting Image Color Spaces
+
+The notebook reads an image file ("mikha.jpg") and converts it to various color spaces: 
+1. Reads the image using cv.imread. 
+2. Converts the image from BGR to RGB using cv.cvtColor. 
+3. Converts the image from BGR to HSV using cv.cvtColor.
+A list of images and corresponding titles is created and then displayed side by side using the "plot_images" function.
+
+D. Interpolation Techniques for Image Resizing
+
+Different interpolation methods for image resizing are demonstrated: 
+• Nearest Neighbor (cv.INTER_NEAREST) 
+• Bilinear (cv.INTER_LINEAR) 
+• Bicubic (cv.INTER_CUBIC)
+A new target size (8000, 8000) is set.
+A loop iterates over the interpolation methods, resizing the image with each method using cv.resize.
+Each resized image is converted from BGR to RGB and displayed with a title indicating the interpolation method.
+
+E. Geometric Transformations
+
+Three basic transformations are applied: 
+1. Scaling: The image is resized down by 50%. New dimensions are calculated, and the image is resized using cv.resize. 
+2. Rotation: The image is rotated by 45 degrees. A rotation matrix is generated with cv.getRotationMatrix2D, then applied with cv.warpAffine. 
+3. Translation: The image is moved 100 pixels along both the x and y axes. A translation matrix is created using NumPy and applied using cv.warpAffine.
+The rescaled, rotated, and translated images are displayed side by side using Matplotlib.
+
+F. HSV Color Model Transformation
+
+The notebook repeats the transformation process within the HSV color space: 
+• The image is converted to HSV. 
+• The HSV image is resized using Bicubic interpolation. 
+• The scaled HSV image is rotated and then translated. 
+• The final transformed image is converted back to RGB for display.
+The final image is displayed with an appropriate title.
+
